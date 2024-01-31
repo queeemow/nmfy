@@ -1,0 +1,10 @@
+ffmpeg-python==0.2.0
+pyTelegramBotAPI==4.14.0
+requests==2.31.0
+Telethon==1.32.1
+youtube-dl==2021.12.17
+Telethon==1.32.1
+psycopg2-binary==2.9.9
+python-dotenv==1.0.0
+pika==1.3.2
+git+https://github.com/queeemow/pytube_without_age_error.git#egg=pytube

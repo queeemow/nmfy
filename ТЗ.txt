@@ -1,0 +1,65 @@
+1 - База данных
+  |
+  - - - User
+  |
+  - - - Chat
+  |
+    - - Files
+  |
+   - - -Provider(Enum)
+
+2 - ТЕРМИНЫ
+__________________
+    SOLID принципы
+    AMQ+
+    RabbitMQ
+    Docker-Compose
+    File Project
+    Migrations
+    Cap Теорема
+    Теории Множеств
+    ACID
+    Реляционные - нереляционные БД
+    Бритва Оккама
+    Внешние ключи
+    Нормализация данных
+    Вложенные запросы(SQL)
+    Индекс в БД
+    Стек ппользовательских запросов
+    Загрузка видео на сервер по чанкам и моментальное удаление чанка по завершении его загрузки
+    Relation (1-1)/(m-1)/(1-m)/(m-m)
+
+3 - SendYT - SendIG - Send_large_video - send_large_audio ----> send() - Полиморфизм
+    DownloadYT - DownloadIG ----> download() - Полиморфизм
+
+4 - YT and IG utils methods:
+    get_path() - убрать
+    download_audio_only - download_video ----> execute() - Полиморфизм
+    static get_resolution(url) - сделать статическим чтобы можно было определить доступные разрешения до создания экземпляра класса
+    _get_res() - _set_res() .... - сделать все остальные методы приватными - Инкапсуляция
+    __init__(self, url, res = 0) - принимает на вход ссылку на видео, и разрешение(опционально) -> если разрешение было передано, 
+                                                                    то значит это видео и его следует скачать именно с этим разрешением
+
+5 - БД: 
+    ID: UUID везде
+    request_url ---> запихнуть в Files
+    Chat ----> foreign key to user ID
+    Files ----> foreign key to chat ID
+    Provider ----> foreign key to file id
+
+6 - Задачи:
+    Пофиксить логи(все должно быть на английском)
+    Все комменты на английском
+    Папка src ---> Разные файлы для разных классов из utils.py(Декомпозиция)
+    Сделать код читабельнее 
+    Исправить нейминг переменных класса
+    Добавить Enums
+    Почитать нотацию
+    Уходить от костылей
+
+7 - Почитать, что такое:
+    Primary key(unique)
+    Foreign key(1 to 1; 1 to many; many to 1, many to many)
+    JOIN
+    Nested SELECT
+    разобраться с rabbitmq  изаменить убогость sending sending_queue и clients на нормальную очередь человеческую
