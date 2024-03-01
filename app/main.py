@@ -32,7 +32,8 @@ class DownloadBot:
     stages = {}
     file_id = {}
     url = {}
-
+    stop_msg = {}
+    download_msg = {}
 
     def __init__(self) -> None:
 
@@ -127,11 +128,11 @@ class DownloadBot:
             return
 
         try:
-            self.download_msg = self.bot.send_message(message.from_user.id, "Downloading, Please stand by...")
+            self.download_msg[message.from_user.id] = self.bot.send_message(message.from_user.id, "Downloading, Please stand by...")
             stop = types.KeyboardButton('stop downloading')
             self.STOP_MARKUP[message.from_user.id] = types.ReplyKeyboardMarkup(resize_keyboard=True)
             self.STOP_MARKUP[message.from_user.id].add(stop)
-            self.stop_msg = self.bot.send_message(message.from_user.id,text='If you want to emergency stop the downloading process, please, click the button'.format(message.from_user), 
+            self.stop_msg[message.from_user.id] = self.bot.send_message(message.from_user.id,text='If you want to emergency stop the downloading process, please, click the button'.format(message.from_user), 
                                   reply_markup=self.STOP_MARKUP[message.from_user.id]) 
             self.YT[message.from_user.id].execute(message = message, bot = self.bot)
             self.send(message)
@@ -184,8 +185,8 @@ class DownloadBot:
         self.get_text_messages(message)
     
     def add_user_data(self, message):
-        self.bot.delete_message(chat_id = message.chat.id, message_id = self.stop_msg.message_id)
-        self.bot.delete_message(chat_id = message.chat.id, message_id = self.download_msg.message_id)
+        self.bot.delete_message(chat_id = message.chat.id, message_id = self.stop_msg[message.from_user.id].message_id)
+        self.bot.delete_message(chat_id = message.chat.id, message_id = self.download_msg[message.from_user.id].message_id)
         self.db = DataBase()
         self.db.add_data(self.user_data[message.from_user.id])
         try:
