@@ -1,6 +1,6 @@
 ffmpeg-python==0.2.0
 pyTelegramBotAPI==4.14.0
-requests==2.31.0
+requests==2.27.1
 Telethon==1.32.1
 youtube-dl==2021.12.17
 Telethon==1.32.1

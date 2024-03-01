@@ -63,6 +63,7 @@ class DLYouTube:
         except:
             pass
         self.path = os.path.abspath('data')
+        self.sessions_path = os.path.abspath('sessions')
         self.url = url
         self.stream = YouTube(self.url, on_progress_callback=self.on_progress, on_complete_callback = self.on_complete)
         self.vid_resolution = res
@@ -89,7 +90,7 @@ class DLYouTube:
 
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
-        self.app = TelegramClient(f'sessions/{client}.session', api_id=API_ID, api_hash=API_HASH)
+        self.app = TelegramClient(f'{self.sessions_path}/{client}.session', api_id=API_ID, api_hash=API_HASH)
         self.app.start()
 
     def __del__(self):

@@ -3,7 +3,6 @@ import telebot
 from src.utils.dlyoutube import DLYouTube
 from src.utils.linkcheck import LinkCheck
 from src.utils.database import DataBase
-from src.utils.rabbitmq import Rabbit
 from pytube.exceptions import ExtractError
 from telebot import types
 from config import CLIENTS, SENDING_QUEUE
@@ -35,11 +34,7 @@ class DownloadBot:
     url = {}
 
 
-    def progress_f(self):
-        pass
-
     def __init__(self) -> None:
-        self.rabbit = Rabbit()
 
         self.bot = telebot.TeleBot(BOT_TOKEN) 
         @self.bot.message_handler(content_types=["text"])

@@ -131,8 +131,8 @@ class DataBase:
 
     def connect(self):
         try:
-            self.connection = psycopg2.connect(dbname='nmfy', user='postgres', 
-                                password='1405', host='localhost')
+            self.connection = psycopg2.connect(dbname='postgres', user='postgres', 
+                                password='1405', host='postgres')
             self.cursor = self.connection.cursor()
             print("Information on PostgreSQL server")
             print(self.connection.get_dsn_parameters(), "\n")
@@ -169,6 +169,4 @@ class DataBase:
         except Exception as e:
             print(e)
 
-# db = DataBase()
-# db.create_table()
-# db.add_data({})
+

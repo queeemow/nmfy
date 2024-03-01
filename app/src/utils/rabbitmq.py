@@ -57,12 +57,3 @@ class Rabbit():
 
         print('Waiting for messages. To exit, press Ctrl+C')
         self.channel.start_consuming()
-
-# mq = Rabbit()
-# mq.put_message(queue_name='pending_queries', message='{user_id: 12423532354, url: ysyysdyfsf.com}')
-# mq.put_message(queue_name='pending_queries', message='{user_id: 2, url: ysyysdyfsf.com}')
-# mq.put_message(queue_name='pending_queries', message='{user_id: 2, url: ysyysdyfsf.com}')
-# mq.put_message(queue_name='pending_queries', message='{user_id: 2, url: ysyysdyfsdfsfdsf.com}')
-# mq.put_message(queue_name='pending_queries', message='{user_id: 2, filesize: 0}')
-# mq.subscribe_to_queue()
-# mq.put_message(queue_name='pending_queries', message='{user_id: 2, filesize: 5013130000}')
