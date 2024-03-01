@@ -1,0 +1,20 @@
+version: '3'
+services:
+  app:
+    build: .
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1405
+      - POSTGRES_DB=postgres
+      - POSTGRES_HOST=postgres
+    restart: always
+    volumes:
+      - ~/db:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+    
