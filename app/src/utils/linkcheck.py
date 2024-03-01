@@ -1,5 +1,6 @@
 import re
 import enum
+from pytube import YouTube
 
 class LinkCheck(enum.Enum): 
     invalid = 0
@@ -8,9 +9,13 @@ class LinkCheck(enum.Enum):
     
     @staticmethod
     def which_link(message):
-        if len(re.findall('youtu.+', str(message))) > 0:
+        try:
+            YouTube(message.text).streams.first
             return LinkCheck.youtube
-        if len(re.findall('https://www.instagram.com/.+', str(message))) > 0:
-            return LinkCheck.instagram
-        else:
-            return LinkCheck.invalid
+        except Exception as e:
+            if len(re.findall('https://www.instagram.com/.+', str(message))) > 0:
+                return LinkCheck.instagram
+            else:
+                return LinkCheck.invalid
+            
+print(LinkCheck.which_link('https://www.youtube.com/live/oWW5TLrrbNo?si=WfZwOe9VfN1mTAaJ'))

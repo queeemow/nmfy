@@ -3,7 +3,7 @@ import telebot
 from src.utils.dlyoutube import DLYouTube
 from src.utils.linkcheck import LinkCheck
 from src.utils.database import DataBase
-from pytube.exceptions import ExtractError
+from pytube.exceptions import ExtractError, LiveStreamError
 from telebot import types
 from config import CLIENTS, SENDING_QUEUE
 import datetime
