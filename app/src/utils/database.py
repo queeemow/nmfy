@@ -131,7 +131,7 @@ class DataBase:
 
     def connect(self):
         try:
-            self.connection = psycopg2.connect(dbname='postgres', user='postgres', 
+            self.connection = psycopg2.connect(dbname='nmfy', user='ytbot', 
                                 password='1405', host='postgres')
             self.cursor = self.connection.cursor()
             print("Information on PostgreSQL server")

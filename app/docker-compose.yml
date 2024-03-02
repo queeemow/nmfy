@@ -8,10 +8,9 @@ services:
   postgres:
     image: postgres:16-alpine
     environment:
-      - POSTGRES_USER=postgres
+      - POSTGRES_USER=ytbot
       - POSTGRES_PASSWORD=1405
-      - POSTGRES_DB=postgres
-      - POSTGRES_HOST=postgres
+      - POSTGRES_DB=nmfy
     restart: always
     volumes:
       - ~/db:/var/lib/postgresql/data
