@@ -9,6 +9,7 @@ from telethon.tl.functions.upload import SaveFilePartRequest, SaveBigFilePartReq
 from telethon.tl.types import InputFile, InputFileBig, DocumentAttributeVideo, DocumentAttributeAudio
 from telethon.utils import pack_bot_file_id
 from dotenv.main import load_dotenv
+import ffmpeg
 load_dotenv()
 
 API_ID = os.environ['API_ID']
@@ -185,3 +186,4 @@ class DLYouTube:
                 break
             available_resolutions = sorted(set(available_resolutions))
         return available_resolutions
+
